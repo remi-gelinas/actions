@@ -1,0 +1,37 @@
+name: The Lix Installer
+
+branding:
+  icon: "code"
+  color: "gray-dark"
+
+description: "Install Lix with the Lix Installer. See: https://git.lix.systems/lix-project/lix-installer"
+
+runs:
+  using: "composite"
+
+  steps:
+    - if: runner.os == 'Linux' && runner.arch == 'X64'
+      shell: bash
+      run: echo "NIX_SYSTEM=x86_64-linux" >> $GITHUB_ENV
+
+    - if: runner.os == 'macOS' && runner.arch == 'X64'
+      shell: bash
+      run: echo "NIX_SYSTEM=x86_64-darwin" >> $GITHUB_ENV
+
+    - if: runner.os == 'macOS' && runner.arch == 'ARM64'
+      shell: bash
+      run: echo "NIX_SYSTEM=aarch64-darwin" >> $GITHUB_ENV
+
+    - uses: DeterminateSystems/nix-installer-action@v16
+      with:
+        source-url: https://install.lix.systems/lix/lix-installer-${{ env.NIX_SYSTEM }}
+        diagnostic-endpoint: ""
+        extra-conf: |
+          experimental-features = nix-command flakes pipe-operator
+          auto-optimise-store = true
+          auto-allocate-uids = true
+
+    - name: Set up Lix cache
+      uses: DeterminateSystems/magic-nix-cache-action@b46e247b898aa56e6d2d2e728dc6df6c84fdb738 # v7
+      with:
+        diagnostic-endpoint: ""

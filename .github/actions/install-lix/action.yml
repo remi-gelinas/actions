@@ -14,6 +14,10 @@ runs:
       shell: bash
       run: echo "NIX_SYSTEM=x86_64-linux" >> $GITHUB_ENV
 
+    - if: runner.os == 'Linux' && runner.arch == 'ARM64'
+      shell: bash
+      run: echo "NIX_SYSTEM=aarch64-linux" >> $GITHUB_ENV
+
     - if: runner.os == 'macOS' && runner.arch == 'X64'
       shell: bash
       run: echo "NIX_SYSTEM=x86_64-darwin" >> $GITHUB_ENV

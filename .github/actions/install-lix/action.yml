@@ -27,7 +27,7 @@ runs:
         source-url: https://install.lix.systems/lix/lix-installer-${{ env.NIX_SYSTEM }}
         diagnostic-endpoint: ""
         extra-conf: |
-          experimental-features = nix-command flakes pipe-operator
+          experimental-features = nix-command flakes pipe-operator auto-allocate-uids
           auto-optimise-store = true
           auto-allocate-uids = true
 

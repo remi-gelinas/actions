@@ -36,6 +36,6 @@ runs:
           auto-allocate-uids = true
 
     - name: Set up Lix cache
-      uses: DeterminateSystems/magic-nix-cache-action@b46e247b898aa56e6d2d2e728dc6df6c84fdb738 # v7
+      uses: DeterminateSystems/magic-nix-cache-action@6221693898146dc97e38ad0e013488a16477a4c4 # v9
       with:
         diagnostic-endpoint: ""

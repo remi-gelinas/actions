@@ -34,7 +34,7 @@ runs:
     #       experimental-features = nix-command flakes pipe-operator auto-allocate-uids
     #       auto-optimise-store = true
     #       auto-allocate-uids = true
-    - uses: canidae-solutions/lix-quick-install-action@v2
+    - uses: canidae-solutions/lix-quick-install-action@19e34da3031ec7e35f06561e3606c512a164c9aa # v2
       with:
         lix_conf: |
           experimental-features = nix-command flakes pipe-operator auto-allocate-uids
